@@ -25,6 +25,7 @@ git commit -am "Replace placeholder name with actual project name"
 mkvirtualenv ~/envs/$APPNAME
 workon $APPNAME
 echo "workon $APPNAME" > .env
+git add .env
 git commit -am "Added a .env file for autoenv"
 pip install -r requirements.txt
 heroku apps:create $APPNAME
