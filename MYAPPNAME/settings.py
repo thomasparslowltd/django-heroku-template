@@ -12,7 +12,9 @@ ADMINS = (
 # LOCKDOWN_PASSWORDS = ("password",)
 
 ALLOWED_HOSTS = ["MYAPPNAME.herokuapp.com"]
-
+if DEBUG:
+    ALLOWED_HOSTS.append("localhost")
+    
 MANAGERS = ADMINS
 
 # Local time zone for this installation. Choices can be found here:
