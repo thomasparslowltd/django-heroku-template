@@ -4,10 +4,13 @@
   <head>
     <title></title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}{% less "less/style.less" %}">
+    {% compressed_css 'styles' %}
+    {% block extrahead %}{% endblock %}
   </head>
   <body>
     {% block content %}
     {% endblock content %}
+    
+    {% compressed_js 'scripts' %}
   </body>
 </html>

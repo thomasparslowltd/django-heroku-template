@@ -64,6 +64,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    'static',
 )
 
 # List of finder classes that know how to find static files in
@@ -71,9 +72,50 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'static_precompiler.finders.StaticPrecompilerFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+PIPELINE_COMPILERS = (
+  'pipeline.compilers.less.LessCompiler',
+)
+
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+
+PIPELINE_CSS = {
+    'styles': {
+        'source_filenames': (
+          'less/app.less',
+          'mediaelement/mediaelementplayer.css',
+        ),
+        'output_filename': 'compiled/css/style.css',
+    },
+}
+
+PIPELINE_JS = {
+    'scripts': {
+        'source_filenames': (
+          'js/vendor/jquery.js',
+          'js/vendor/underscore.js',
+          'js/app.js',
+        ),
+        'output_filename': 'compiled/js/site.js',
+    },
+}
+
+PIPELINE_MIMETYPES = (
+    ('text/coffeescript', '.coffee'),
+    ('text/less', '.less'),
+    ('text/javascript', '.js'),
+    ('text/x-sass', '.sass'),
+    ('text/x-scss', '.scss')
+    )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+# If we are on heroku we want to re-define the location of the less binary.
+HEROKU_LESSC = os.path.join(PATH_TO_HERE, '/app/.heroku/python/bin/lessc')
+if os.path.exists(HEROKU_LESSC):
+    PIPELINE_LESS_BINARY = HEROKU_LESSC
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'TODO_SECRET_KEY'
@@ -118,6 +160,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social_auth',
 #    'social_auth.backends.facebook.FacebookBackend',
+    'pipeline',
     'MYAPPNAME',
     'lockdown',
     'storages',
@@ -127,7 +170,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'static_precompiler',
 )
 
 
