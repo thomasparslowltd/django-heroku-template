@@ -1,5 +1,7 @@
 # Django settings for MYAPPNAME project.
+from __future__ import absolute_import
 import os,sys
+from celery.schedules import crontab
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -162,6 +164,7 @@ INSTALLED_APPS = (
     'social_auth',
 #    'social_auth.backends.facebook.FacebookBackend',
     'pipeline',
+    'djcelery',
     'MYAPPNAME',
     'lockdown',
     'storages',
@@ -178,6 +181,15 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_auth.backends.facebook.FacebookBackend',
 )
+
+CELERYBEAT_SCHEDULE = {
+    # 'every-1am': {
+    #     'task': 'tasks.my_daily_task',
+    #     'schedule': crontab(hour=1, minute=0) # Daily at 1am
+    # },
+}
+
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 
 FACEBOOK_APP_ID = 'TODO'
 FACEBOOK_API_SECRET = 'TODO'
@@ -241,7 +253,7 @@ LOGGING = {
 }
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     # Heroku setup
     
