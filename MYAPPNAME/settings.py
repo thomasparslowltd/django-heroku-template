@@ -4,6 +4,8 @@ import os,sys
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+PATH_TO_HERE = os.getcwd()
+
 ADMINS = (
     ('Thomas Parslow', 'tom@almostobsolete.net'),
 )
@@ -84,8 +86,7 @@ PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 PIPELINE_CSS = {
     'styles': {
         'source_filenames': (
-          'less/app.less',
-          'mediaelement/mediaelementplayer.css',
+          'less/styles.less',
         ),
         'output_filename': 'compiled/css/style.css',
     },

@@ -21,12 +21,14 @@ git checkout -b master
 gsed -i s/TODO_SECRET_KEY/`head -c1000 /dev/random  | md5`-`head -c1000 /dev/random  | md5`/ MYAPPNAME/settings.py
 find . -iname '*.py' | xargs gsed -i "s/MYAPPNAME/$APPNAME/"
 git mv MYAPPNAME $APPNAME
+git mv $APPNAME/templates/MYAPPNAME $APPNAME/templates/$APPNAME
 git commit -am "Replace placeholder name with actual project name"
 mkvirtualenv ~/envs/$APPNAME
 workon $APPNAME
 echo "workon $APPNAME" > .env
 git add .env
 git commit -am "Added a .env file for autoenv"
+cp $APPNAME/local_settings.py.example $APPNAME/local_settings.py
 pip install -r requirements.txt
 heroku apps:create $APPNAME
 git push heroku master
