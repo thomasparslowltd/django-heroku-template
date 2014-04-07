@@ -1,0 +1,24 @@
+{
+  "name": "MYAPPNAME",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "jquery": "~2.1.0",
+    "browserify": "~3.38.1",
+    "brfs": "~1.0.1",
+    "angular-ui-router": "~0.2.10",
+    "napa": "~0.4.1",
+    "less": "~1.7.0",
+    "yuglify": "~0.1.4",
+    "browserify-ngannotate": "0.0.4"
+  },
+  "scripts": {
+    "install": "node_modules/.bin/napa"
+  },
+  "napa": {
+    "angular": "angular/bower-angular",
+    "angular-resource": "angular/bower-angular-resource",
+    "ui-bootstrap": "angular-ui/bootstrap-bower",
+    "underscore": "jashkenas/underscore"
+  }
+}

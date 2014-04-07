@@ -1,0 +1,30 @@
+{% load compressed %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Super App{% endblock title %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% compressed_css 'styles' %}
+    {% block extrahead %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand" href="#">Super App</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-01">
+          <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#fakelink">Nav Item</a></li> -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav><!-- /navbar -->
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>
