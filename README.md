@@ -15,7 +15,7 @@ Requires `gsed` (`brew install gsed`), `git`, `pip`,`virtualenv`,`virtualenvwrap
 
 ```
 export APPNAME=realappname
-git clone git@github.com:thomasparslowltd/django-heroku-template.git $APPNAME
+git clone git@github.com:thomasparslowltd/toms-django-template.git $APPNAME
 cd $APPNAME
 git checkout -b master
 gsed -i s/TODO_SECRET_KEY/`head -c1000 /dev/random  | md5`-`head -c1000 /dev/random  | md5`/ MYAPPNAME/settings.py
