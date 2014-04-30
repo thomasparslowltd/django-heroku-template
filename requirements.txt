@@ -31,7 +31,3 @@ jsmin==2.0.9
 
 supervisor==3.0
 django-kombu==0.9.4
-
-supervisor==3.0
-
-yattag==0.9.4
