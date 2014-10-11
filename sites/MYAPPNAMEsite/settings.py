@@ -184,7 +184,6 @@ INSTALLED_APPS = (
     'djkombu',
     
     'MYAPPNAME',
-    'media',
     
     'lockdown',
     'storages',
