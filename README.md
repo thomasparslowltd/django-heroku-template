@@ -31,6 +31,7 @@ git add .env
 git commit -am "Added a .env file for autoenv"
 pip install -r requirements.txt
 heroku apps:create $APPNAME
+heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-python
 git push heroku master
 heroku run 'python manage.py syncdb --migrate'
 git remote rename origin template
